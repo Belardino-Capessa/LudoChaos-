@@ -39,28 +39,35 @@
   ],
   "screenshots": [
     {
-      "src": "assets/imagem/screen1.jpg",
+      "src": "assets/imagem/screen1.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Menu Principal e Modos de Jogo"
+      "label": "Tela de carregamento"
     },
     {
-      "src": "assets/imagem/screen2.jpg",
+      "src": "assets/imagem/screen2.png",
       "sizes": "1080x1920",
-      "type": "image/jpeg",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Painel Principal e Modos de jogo"
+    },
+    {
+      "src": "assets/imagem/screen3.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
       "form_factor": "narrow",
       "label": "Tabuleiro e Cartas do LudoChaos"
     },
     {
-      "src": "assets/imagem/screen3.jpg",
+      "src": "assets/imagem/screen4.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Modo Online"
     },
     {
-      "src": "assets/imagem/screen4.jpg",
+      "src": "assets/imagem/screen5.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow",
