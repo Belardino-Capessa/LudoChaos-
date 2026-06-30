@@ -1,0 +1,70 @@
+{
+  "name": "LudoChaos",
+  "short_name": "LudoChaos",
+  "description": "LudoChaos é um jogo moderno de Ludo com cartas estratégicas, poderes únicos e multiplayer online ou offline desenvolvido pela Capessa Studios.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#120F0E",
+  "theme_color": "#1A1F2E",
+  "orientation": "portrait",
+  "categories": [
+    "games",
+    "strategy"
+  ],
+  "icons": [
+    {
+      "src": "imagem/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "imagem/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "imagem/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "imagem/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "imagem/screen1.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Menu Principal e Modos de Jogo"
+    },
+    {
+      "src": "imagem/screen2.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Tabuleiro e Cartas do LudoChaos"
+    },
+    {
+      "src": "imagem/screen3.jpg",
+      "sizes": "1920x1080",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Visão Expandida do Tabuleiro"
+    },
+    {
+      "src": "imagem/screen4.jpg",
+      "sizes": "1920x1080",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Sistema de Logs e Notificações"
+    }
+  ]
+    }
