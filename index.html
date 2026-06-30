@@ -74,12 +74,41 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 <script>
+// =========================
+// SERVICE WORKER REGISTER
+// =========================
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./service-worker.js")
-      .then(() => console.log("SW ativo"))
-      .catch(err => console.log("SW erro:", err));
+      .then((reg) => {
+        console.log("✅ SW ativo:", reg.scope);
+      })
+      .catch((err) => {
+        console.log("❌ Erro SW:", err);
+      });
   });
+}
+
+// =========================
+// BACKGROUND SYNC REQUEST
+// =========================
+function requestSync() {
+  if ("serviceWorker" in navigator && "SyncManager" in window) {
+    navigator.serviceWorker.ready.then((sw) => {
+      sw.sync.register("sync-game-data");
+    });
+  }
+}
+
+// =========================
+// PUSH NOTIFICATION ENABLE
+// =========================
+async function enablePush() {
+  const permission = await Notification.requestPermission();
+
+  if (permission === "granted") {
+    console.log("🔔 Notificações ativadas");
+  }
 }
 </script>
 <style>
