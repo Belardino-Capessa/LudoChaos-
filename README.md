@@ -26,7 +26,7 @@ Este projeto foi construído focado em performance, usando tecnologias web nativ
 
 Como o jogo é uma aplicação Single-Page (SPA) baseada em Vanilla JS, não precisas de processos complexos de build.
 
-• Abra esse endereço no seu navegador para jogar ele :https://belardino-capessa.github.io/LudoChaos-/
+• Abra esse endereço no seu navegador para jogar ele :https://belardino-capessa.github.io/LudoChaos/
 
 **Nota para o Multiplayer Online:** O jogo já está configurado com o Firebase. Para que o modo online funcione perfeitamente, o jogo deve ser acedido através de um servidor HTTP/HTTPS (local ou em produção).
 
