@@ -1,9 +1,11 @@
-const CACHE_NAME = "ludochaos-v2";
+const CACHE_NAME = "ludochaos-v3";
 
-const FILES_TO_CACHE = [
+const FILES = [
   "./",
   "./index.html",
   "./manifest.json",
+  "./service-worker.js",
+
   "./assets/imagem/logo192.png",
   "./assets/imagem/logo512.png"
 ];
@@ -12,32 +14,23 @@ const FILES_TO_CACHE = [
 self.addEventListener("install", (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(FILES_TO_CACHE);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES))
   );
 });
 
 // ACTIVATE
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      );
-    })
+    caches.keys().then((keys) =>
+      Promise.all(keys.map((k) => k !== CACHE_NAME && caches.delete(k)))
+    )
   );
 });
 
-// FETCH (offline real)
+// FETCH (offline seguro)
 self.addEventListener("fetch", (event) => {
   const req = event.request;
 
-  // HTML NAVIGATION (IMPORTANTE)
   if (req.mode === "navigate") {
     event.respondWith(
       fetch(req).catch(() => caches.match("./index.html"))
@@ -45,15 +38,9 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // ASSETS
   event.respondWith(
     caches.match(req).then((cached) => {
-      return cached || fetch(req).then((res) => {
-        return caches.open(CACHE_NAME).then((cache) => {
-          cache.put(req, res.clone());
-          return res;
-        });
-      });
+      return cached || fetch(req);
     })
   );
 });
