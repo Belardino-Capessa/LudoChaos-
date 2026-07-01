@@ -5,9 +5,42 @@ const FILES = [
   "./",
   "./index.html",
   "./manifest.json",
+  "./service-worker.js",
 
+  // Font Awesome
+  "./assets/fontawesome/css/all.min.css",
+  "./assets/fontawesome/webfonts/fa-solid-900.woff2",
+  "./assets/fontawesome/webfonts/fa-regular-400.woff2",
+  "./assets/fontawesome/webfonts/fa-brands-400.woff2",
+
+  //fontes
+  "./assets/fontes/DMSerifDisplay-Regular.tff",
+  "./assets/fontes/Inter-Bold.tff",
+  "./assets/fontes/Inter-Medium.tff",
+  "./assets/fontes/Inter-Regular.tff",
+  "./assets/fontes/Inter-SemiBold.tff",
+  
+
+  // Ícones
   "./assets/imagem/logo192.png",
-  "./assets/imagem/logo512.png"
+  "./assets/imagem/logo512.png",
+  "./assets/imagem/logo.png",
+
+  // Screenshots
+  "./assets/imagem/screen1.png",
+  "./assets/imagem/screen2.png",
+  "./assets/imagem/screen3.png",
+  "./assets/imagem/screen4.png",
+  "./assets/imagem/screen5.png",
+
+  // Imagens do jogo
+  "./assets/imagem/",
+
+  // Sons
+  "./assets/musicas/",
+  "./assets/musicas/fundo.mp3",
+  "./assets/musicas/fundo1.mp3",
+  "./assets/musicas/vitoria.mp3"
 ];
 
 // =========================
