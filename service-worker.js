@@ -1,25 +1,23 @@
-const CACHE_NAME = "ludochaos-v6";
+const CACHE_NAME = "ludochaos-v6.1";
 
 // =========================
-// LISTA SEGURA DE ARQUIVOS
-// (SEM pastas, SEM riscos de cache quebrar)
+// ARQUIVOS ESSENCIAIS
 // =========================
 const FILES = [
   "./",
   "./index.html",
   "./manifest.json",
 
-  // Service Worker (auto update)
-  "./service-worker.js",
-
   // =========================
-  // ÍCONES
+  // ICONS
   // =========================
   "./assets/imagem/logo192.png",
   "./assets/imagem/logo512.png",
   "./assets/imagem/logo.png",
 
-  // Screenshots
+  // =========================
+  // SCREENSHOTS
+  // =========================
   "./assets/imagem/screen1.png",
   "./assets/imagem/screen2.png",
   "./assets/imagem/screen3.png",
@@ -35,7 +33,7 @@ const FILES = [
   "./assets/fontawesome/webfonts/fa-brands-400.woff2",
 
   // =========================
-  // FONTES (corrigido .ttf)
+  // FONTES (.ttf corretos)
   // =========================
   "./assets/fontes/DMSerifDisplay-Regular.ttf",
   "./assets/fontes/Inter-Bold.ttf",
@@ -44,7 +42,7 @@ const FILES = [
   "./assets/fontes/Inter-SemiBold.ttf",
 
   // =========================
-  // SONS (ficheiros individuais)
+  // SONS
   // =========================
   "./assets/musicas/fundo.mp3",
   "./assets/musicas/fundo1.mp3",
@@ -52,31 +50,28 @@ const FILES = [
 ];
 
 // =========================
-// FUNÇÃO SEGURA DE CACHE
-// =========================
-async function cacheFiles(cache, files) {
-  for (const file of files) {
-    try {
-      await cache.add(file);
-    } catch (err) {
-      console.warn("⚠️ Falha ao cachear:", file, err);
-    }
-  }
-}
-
-// =========================
-// INSTALL
+// INSTALL (CACHE SEGURO)
 // =========================
 self.addEventListener("install", (event) => {
   self.skipWaiting();
 
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cacheFiles(cache, FILES))
+    caches.open(CACHE_NAME).then(async (cache) => {
+      console.log("📦 Cache LudoChaos v6.1");
+
+      for (const file of FILES) {
+        try {
+          await cache.add(file);
+        } catch (err) {
+          console.warn("⚠️ Falhou cache:", file);
+        }
+      }
+    })
   );
 });
 
 // =========================
-// ACTIVATE (limpa caches antigos)
+// ACTIVATE (limpa versões antigas)
 // =========================
 self.addEventListener("activate", (event) => {
   event.waitUntil(
@@ -95,12 +90,12 @@ self.addEventListener("activate", (event) => {
 });
 
 // =========================
-// FETCH (offline first seguro)
+// FETCH (OFFLINE FIRST REAL)
 // =========================
 self.addEventListener("fetch", (event) => {
   const req = event.request;
 
-  // Navegação (HTML principal)
+  // HTML (navegação)
   if (req.mode === "navigate") {
     event.respondWith(
       fetch(req).catch(() => caches.match("./index.html"))
@@ -108,14 +103,12 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Cache-first com fallback seguro
+  // Assets (cache-first)
   event.respondWith(
     caches.match(req).then((cached) => {
       return (
         cached ||
-        fetch(req).catch(() => {
-          return caches.match("./index.html");
-        })
+        fetch(req).catch(() => cached || caches.match("./index.html"))
       );
     })
   );
@@ -131,7 +124,7 @@ self.addEventListener("sync", (event) => {
 });
 
 async function syncGameData() {
-  console.log("🔄 LudoChaos sync executado (v6)");
+  console.log("🔄 Sync LudoChaos v6.1 executado");
 }
 
 // =========================
@@ -143,7 +136,7 @@ self.addEventListener("push", (event) => {
   event.waitUntil(
     self.registration.showNotification("LudoChaos", {
       body: data,
-      icon: "/assets/imagem/logo192.png"
+      icon: "./assets/imagem/logo192.png"
     })
   );
 });
