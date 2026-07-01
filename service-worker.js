@@ -1,4 +1,4 @@
-const CACHE_NAME = "ludochaos-v1";
+const CACHE_NAME = "ludochaos-v5";
 
 // arquivos essenciais do jogo
 const FILES = [
